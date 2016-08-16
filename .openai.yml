@@ -14,7 +14,7 @@ envs:
       - envs/__init__.py
       - envs/acrobot.py
       - envs/assets/clockwise.png
-    commit_hash: master
+    commit_hash: 9c7bebfb3595b357c4d6b39e8f5cc5cecb9be004
 
   - id: CartPole
     version: 0
@@ -29,7 +29,7 @@ envs:
       - envs/__init__.py
       - envs/cartpole.py
       - envs/assets/clockwise.png
-    commit_hash: master
+    commit_hash: 9c7bebfb3595b357c4d6b39e8f5cc5cecb9be004
 
   - id: CartPole
     version: 1
@@ -44,5 +44,5 @@ envs:
       - envs/__init__.py
       - envs/cartpole.py
       - envs/assets/clockwise.png
-    commit_hash: master
+    commit_hash: 9c7bebfb3595b357c4d6b39e8f5cc5cecb9be004
 
