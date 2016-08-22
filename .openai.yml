@@ -10,12 +10,12 @@ envs:
     requirements:
       - gym
       - numpy
-    files:
+    files: &default_files
       - envs/__init__.py
       - envs/acrobot.py
       - envs/cartpole.py
       - envs/assets/clockwise.png
-    commit_hash: 2038a0478da31941049364746c8d8c56b1073630
+    commit_ref: master
 
   - id: CartPole
     version: 1
@@ -26,12 +26,8 @@ envs:
       - gym
       - math
       - numpy
-    files:
-      - envs/__init__.py
-      - envs/acrobot.py
-      - envs/cartpole.py
-      - envs/assets/clockwise.png
-    commit_hash: 2038a0478da31941049364746c8d8c56b1073630
+    files: *default_files
+    commit_ref: master
 
 # Old versions
 
@@ -44,12 +40,8 @@ envs:
       - gym
       - math
       - numpy
-    files:
-      - envs/__init__.py
-      - envs/acrobot.py
-      - envs/cartpole.py
-      - envs/assets/clockwise.png
-    commit_hash: 2038a0478da31941049364746c8d8c56b1073630
+    files: *default_files
+    commit_ref: master
 
 
 
