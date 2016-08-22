@@ -41,7 +41,7 @@ envs:
       - math
       - numpy
     files: *default_files
-    commit_ref: master
+    commit_ref: non-existent
 
 
 
