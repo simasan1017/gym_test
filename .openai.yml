@@ -1,45 +1,673 @@
 envs:
-  - id: Acrobot
-    version: 0
-    entry_point: envs:AcrobotEnv
-    timestep_limit: 500
-    description: |
-      The acrobot system includes two joints and two links, where the joint between the two links is actuated.
-      Initially, the links are hanging downwards, and the goal is to swing the end of the lower link
-      up to a given height.
-    requirements:
-      - gym
-      - numpy
-    files: &default_files
-      - envs/__init__.py
-      - envs/acrobot.py
-      - envs/cartpole.py
-      - envs/assets/clockwise.png
-    commit_ref: master
+  - env: &super_mario
+      id: SuperMarioBros-1-1
+      version: 0
+      reward_threshold: 3226
+      kwargs: { draw_tiles: false, level: 0 }
+      entry_point: super_mario:SuperMarioBrosEnv
+      timestep_limit: 10000
+      trials: 100
+      description: |
+        Level of the original Super Mario Bros game.
+      nondeterministic: true
+      requirements:
+        - gym
+      files:
+        - super_mario/lua/super-mario-bros.lua
+        - super_mario/roms/super-mario.nes
+        - super_mario/__init__.py
+        - super_mario/nes_env.py
+        - super_mario/super_mario_bros.py
+      commit_ref: master
 
-  - id: CartPole
-    version: 1
-    entry_point: envs:CartPoleEnv
-    timestep_limit: 500
-    reward_threshold: 475.0
-    requirements:
-      - gym
-      - numpy
-    files: *default_files
-    commit_ref: master
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-1-2
+      reward_threshold: 3226
+      kwargs: { draw_tiles: false, level: 1 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-1-3
+      reward_threshold: 2474
+      kwargs: { draw_tiles: false, level: 2 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-1-4
+      reward_threshold: 2390
+      kwargs: { draw_tiles: false, level: 3 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-1
+      reward_threshold: 3258
+      kwargs: { draw_tiles: false, level: 4 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-2
+      reward_threshold: 3226
+      kwargs: { draw_tiles: false, level: 5 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-3
+      reward_threshold: 3642
+      kwargs: { draw_tiles: false, level: 6 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-4
+      reward_threshold: 2390
+      kwargs: { draw_tiles: false, level: 7 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-1
+      reward_threshold: 3258
+      kwargs: { draw_tiles: false, level: 8 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-2
+      reward_threshold: 3402
+      kwargs: { draw_tiles: false, level: 9 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-3
+      reward_threshold: 2458
+      kwargs: { draw_tiles: false, level: 10 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-4
+      reward_threshold: 2390
+      kwargs: { draw_tiles: false, level: 11 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-1
+      reward_threshold: 3658
+      kwargs: { draw_tiles: false, level: 12 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-2
+      reward_threshold: 3226
+      kwargs: { draw_tiles: false, level: 13 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-3
+      reward_threshold: 2394
+      kwargs: { draw_tiles: false, level: 14 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-4
+      reward_threshold: 2902
+      kwargs: { draw_tiles: false, level: 15 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-1
+      reward_threshold: 3242
+      kwargs: { draw_tiles: false, level: 16 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-2
+      reward_threshold: 3258
+      kwargs: { draw_tiles: false, level: 17 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-3
+      reward_threshold: 2474
+      kwargs: { draw_tiles: false, level: 18 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-4
+      reward_threshold: 2389
+      kwargs: { draw_tiles: false, level: 19 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-1
+      reward_threshold: 3066
+      kwargs: { draw_tiles: false, level: 20 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-2
+      reward_threshold: 3514
+      kwargs: { draw_tiles: false, level: 21 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-3
+      reward_threshold: 2714
+      kwargs: { draw_tiles: false, level: 22 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-4
+      reward_threshold: 2389
+      kwargs: { draw_tiles: false, level: 23 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-1
+      reward_threshold: 2922
+      kwargs: { draw_tiles: false, level: 24 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-2
+      reward_threshold: 3226
+      kwargs: { draw_tiles: false, level: 25 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-3
+      reward_threshold: 3642
+      kwargs: { draw_tiles: false, level: 26 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-4
+      reward_threshold: 3413
+      kwargs: { draw_tiles: false, level: 27 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-1
+      reward_threshold: 6074
+      kwargs: { draw_tiles: false, level: 28 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-2
+      reward_threshold: 3514
+      kwargs: { draw_tiles: false, level: 29 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-3
+      reward_threshold: 3514
+      kwargs: { draw_tiles: false, level: 30 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-4
+      reward_threshold: 4949
+      kwargs: { draw_tiles: false, level: 31 }
 
-# Old versions
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-1-1-Tiles
+      reward_threshold: 3226
+      kwargs: { draw_tiles: true, level: 0 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-1-2-Tiles
+      reward_threshold: 3226
+      kwargs: { draw_tiles: true, level: 1 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-1-3-Tiles
+      reward_threshold: 2474
+      kwargs: { draw_tiles: true, level: 2 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-1-4-Tiles
+      reward_threshold: 2390
+      kwargs: { draw_tiles: true, level: 3 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-1-Tiles
+      reward_threshold: 3258
+      kwargs: { draw_tiles: true, level: 4 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-2-Tiles
+      reward_threshold: 3226
+      kwargs: { draw_tiles: true, level: 5 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-3-Tiles
+      reward_threshold: 3642
+      kwargs: { draw_tiles: true, level: 6 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-2-4-Tiles
+      reward_threshold: 2390
+      kwargs: { draw_tiles: true, level: 7 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-1-Tiles
+      reward_threshold: 3258
+      kwargs: { draw_tiles: true, level: 8 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-2-Tiles
+      reward_threshold: 3402
+      kwargs: { draw_tiles: true, level: 9 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-3-Tiles
+      reward_threshold: 2458
+      kwargs: { draw_tiles: true, level: 10 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-3-4-Tiles
+      reward_threshold: 2390
+      kwargs: { draw_tiles: true, level: 11 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-1-Tiles
+      reward_threshold: 3658
+      kwargs: { draw_tiles: true, level: 12 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-2-Tiles
+      reward_threshold: 3226
+      kwargs: { draw_tiles: true, level: 13 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-3-Tiles
+      reward_threshold: 2394
+      kwargs: { draw_tiles: true, level: 14 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-4-4-Tiles
+      reward_threshold: 2902
+      kwargs: { draw_tiles: true, level: 15 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-1-Tiles
+      reward_threshold: 3242
+      kwargs: { draw_tiles: true, level: 16 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-2-Tiles
+      reward_threshold: 3258
+      kwargs: { draw_tiles: true, level: 17 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-3-Tiles
+      reward_threshold: 2474
+      kwargs: { draw_tiles: true, level: 18 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-5-4-Tiles
+      reward_threshold: 2389
+      kwargs: { draw_tiles: true, level: 19 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-1-Tiles
+      reward_threshold: 3066
+      kwargs: { draw_tiles: true, level: 20 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-2-Tiles
+      reward_threshold: 3514
+      kwargs: { draw_tiles: true, level: 21 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-3-Tiles
+      reward_threshold: 2714
+      kwargs: { draw_tiles: true, level: 22 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-6-4-Tiles
+      reward_threshold: 2389
+      kwargs: { draw_tiles: true, level: 23 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-1-Tiles
+      reward_threshold: 2922
+      kwargs: { draw_tiles: true, level: 24 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-2-Tiles
+      reward_threshold: 3226
+      kwargs: { draw_tiles: true, level: 25 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-3-Tiles
+      reward_threshold: 3642
+      kwargs: { draw_tiles: true, level: 26 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-7-4-Tiles
+      reward_threshold: 3413
+      kwargs: { draw_tiles: true, level: 27 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-1-Tiles
+      reward_threshold: 6074
+      kwargs: { draw_tiles: true, level: 28 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-2-Tiles
+      reward_threshold: 3514
+      kwargs: { draw_tiles: true, level: 29 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-3-Tiles
+      reward_threshold: 3514
+      kwargs: { draw_tiles: true, level: 30 }
+  - env:
+      <<: *super_mario
+      id: SuperMarioBros-8-4-Tiles
+      reward_threshold: 4949
+      kwargs: { draw_tiles: true, level: 31 }
 
-  - id: CartPole
-    version: 0
-    entry_point: envs:CartPoleEnv
-    timestep_limit: 200
-    reward_threshold: 195.0
-    requirements:
-      - gym
-      - numpy
-    files: *default_files
-    commit_ref: non-existent
+  - env: &meta_super_mario
+      id: meta-SuperMarioBros
+      version: 0
+      reward_threshold: 32000
+      kwargs: { draw_tiles: false, average_over: 3, passing_grade: 600, min_tries_for_avg: 3 }
+      entry_point: super_mario:MetaSuperMarioBrosEnv
+      timestep_limit: 99999999
+      trials: 100
+      description: |
+        Meta-Level containing all 32 levels of the original Super Mario Bros game.
+      nondeterministic: true
+      requirements:
+        - gym
+      files:
+        - super_mario/lua/super-mario-bros.lua
+        - super_mario/roms/super-mario.nes
+        - super_mario/__init__.py
+        - super_mario/nes_env.py
+        - super_mario/super_mario_bros.py
+      commit_ref: master
 
+  - env:
+      <<: *meta_super_mario
+      id: meta-SuperMarioBros-Tiles
+      kwargs: { draw_tiles: true, average_over: 3, passing_grade: 600, min_tries_for_avg: 3 }
 
+  - env: &doom
+      id: DoomBasic
+      version: 0
+      reward_threshold: 10.0
+      timestep_limit: 10000
+      entry_point: doom:DoomBasicEnv
+      trials: 100
+      description: |
+        This map is rectangular with gray walls, ceiling and floor.
+        You are spawned in the center of the longer wall, and a red
+        circular monster is spawned randomly on the opposite wall.
+        You need to kill the monster (one bullet is enough).
 
+        Goal: 10 points
+            - Kill the monster in 3 secs with 1 shot
+
+        Rewards:
+            - Plus 101 pts for killing the monster
+            - Minus  5 pts for missing a shot
+            - Minus  1 pts every 0.028 secs
+
+        Ends when:
+            - Monster is dead
+            - Player is dead
+            - Timeout (10 seconds - 350 frames)
+
+        Allowed actions:
+            - ATTACK
+            - MOVE_RIGHT
+            - MOVE_LEFT
+      requirements:
+        - gym
+        - doom_py>=0.0.11
+      files:
+        - doom/assets/basic.cfg
+        - doom/assets/deadly_corridor.cfg
+        - doom/assets/deathmatch.cfg
+        - doom/assets/defend_the_center.cfg
+        - doom/assets/defend_the_line.cfg
+        - doom/assets/health_gathering.cfg
+        - doom/assets/my_way_home.cfg
+        - doom/assets/predict_position.cfg
+        - doom/assets/take_cover.cfg
+        - doom/__init__.py
+        - doom/controls.md
+        - doom/doom_basic.py
+        - doom/doom_corridor.py
+        - doom/doom_deathmatch.py
+        - doom/doom_defend_center.py
+        - doom/doom_defend_line.py
+        - doom/doom_env.py
+        - doom/doom_health_gathering.py
+        - doom/doom_my_way_home.py
+        - doom/doom_predict_position.py
+        - doom/doom_take_cover.py
+        - doom/meta_doom.py
+      commit_ref: master
+
+  - env:
+      <<: *doom
+      id: DoomCorridor
+      reward_threshold: 1000.0
+      entry_point: doom:DoomCorridorEnv
+      description: |
+        This map is designed to improve your navigation. There is a vest
+        at the end of the corridor, with 6 enemies (3 groups of 2). Your goal
+        is to get to the vest as soon as possible, without being killed.
+
+        Goal: 1,000 points
+            - Reach the vest (or get very close to it)
+
+        Rewards:
+            - Plus distance for getting closer to the vest
+            - Minus distance for getting further from the vest
+            - Minus 100 pts for getting killed
+
+        Ends when:
+            - Player touches vest
+            - Player is dead
+            - Timeout (1 minutes - 2,100 frames)
+
+        Allowed actions:
+            - ATTACK
+            - MOVE_RIGHT
+            - MOVE_LEFT
+            - MOVE_FORWARD
+            - TURN_RIGHT
+            - TURN_LEFT
+
+  - env:
+      <<: *doom
+      id: DoomDefendCenter
+      reward_threshold: 10.0
+      entry_point: doom:DoomDefendCenterEnv
+      description: |
+        This map is designed to teach you how to kill and how to stay alive.
+        You will also need to keep an eye on your ammunition level. You are only
+        rewarded for kills, so figure out how to stay alive.
+
+        The map is a circle with monsters. You are in the middle. Monsters will
+        respawn with additional health when killed. Kill as many as you can
+        before you run out of ammo.
+
+        Goal: 10 points
+            - Kill 11 monsters (you have 26 ammo)
+
+        Rewards:
+            - Plus 1 point for killing a monster
+            - Minus 1 point for getting killed
+
+        Ends when:
+            - Player is dead
+            - Timeout (60 seconds - 2100 frames)
+
+        Allowed actions:
+            - ATTACK
+            - TURN_RIGHT
+            - TURN_LEFT
+
+  - env:
+      <<: *doom
+      id: DoomDefendLine
+      reward_threshold: 15.0
+      entry_point: doom:DoomDefendLineEnv
+      description: |
+        This map is designed to teach you how to kill and how to stay alive.
+        Your ammo will automatically replenish. You are only rewarded for kills,
+        so figure out how to stay alive.
+
+        The map is a rectangle with monsters on the other side. Monsters will
+        respawn with additional health when killed. Kill as many as you can
+        before they kill you. This map is harder than the previous.
+
+        Goal: 15 points
+            - Kill 16 monsters
+
+        Rewards:
+            - Plus 1 point for killing a monster
+            - Minus 1 point for getting killed
+
+        Ends when:
+            - Player is dead
+            - Timeout (60 seconds - 2100 frames)
+
+        Allowed actions:
+            - ATTACK
+            - TURN_RIGHT
+            - TURN_LEFT
+
+  - env:
+      <<: *doom
+      id: DoomHealthGathering
+      reward_threshold: 1000.0
+      entry_point: doom:DoomHealthGatheringEnv
+      description: |
+        This map is a guide on how to survive by collecting health packs.
+        It is a rectangle with green, acidic floor which hurts the player
+        periodically. There are also medkits spread around the map, and
+        additional kits will spawn at interval.
+
+        Goal: 1000 points
+            - Stay alive long enough for approx. 30 secs
+
+        Rewards:
+            - Plus 1 point every 0.028 secs
+            - Minus 100 pts for dying
+
+        Ends when:
+            - Player is dead
+            - Timeout (60 seconds - 2,100 frames)
+
+        Allowed actions:
+            - MOVE_FORWARD
+            - TURN_RIGHT
+            - TURN_LEFT
+
+  - env:
+      <<: *doom
+      id: DoomMyWayHome
+      reward_threshold: 0.5
+      entry_point: doom:DoomMyWayHomeEnv
+      description: |
+        This map is designed to improve navigational skills. It is a series of
+        interconnected rooms and 1 corridor with a dead end. Each room
+        has a separate color. There is a green vest in one of the room.
+        The vest is always in the same room. Player must find the vest.
+
+        Goal: 0.50 point
+            - Find the vest
+
+        Rewards:
+            - Plus 1 point for finding the vest
+            - Minus 0.0001 point every 0.028 secs
+
+        Ends when:
+            - Vest is found
+            - Timeout (1 minutes - 2,100 frames)
+
+        Allowed actions:
+            - MOVE_FORWARD
+            - TURN_RIGHT
+            - TURN_LEFT
+
+  - env:
+      <<: *doom
+      id: DoomPredictPosition
+      reward_threshold: 0.5
+      entry_point: doom:DoomPredictPositionEnv
+      description: |
+        This map is designed to train you on using a rocket launcher.
+        It is a rectangular map with a monster on the opposite side. You need
+        to use your rocket launcher to kill it. The rocket adds a delay between
+        the moment it is fired and the moment it reaches the other side of the room.
+        You need to predict the position of the monster to kill it.
+
+        Goal: 0.5 point
+            - Kill the monster
+
+        Rewards:
+            - Plus 1 point for killing the monster
+            - Minus 0.0001 point every 0.028 secs
+
+        Ends when:
+            - Monster is dead
+            - Out of missile (you only have one)
+            - Timeout (20 seconds - 700 frames)
+
+        Hint: Wait 1 sec for the missile launcher to load.
+
+        Allowed actions:
+            - ATTACK
+            - TURN_RIGHT
+            - TURN_LEFT
+
+  - env:
+      <<: *doom
+      id: DoomTakeCover
+      reward_threshold: 750.0
+      entry_point: doom:DoomTakeCoverEnv
+      description: |
+        This map is to train you on the damage of incoming missiles.
+        It is a rectangular map with monsters firing missiles and fireballs
+        at you. You need to survive as long as possible.
+
+        Goal: 750 points
+            - Survive for approx. 20 seconds
+
+        Rewards:
+            - Plus 1 point every 0.028 secs
+
+        Ends when:
+            - Player is dead (1 or 2 fireballs is enough)
+            - Timeout (60 seconds - 2,100 frames)
+
+        Allowed actions:
+            - MOVE_RIGHT
+            - MOVE_LEFT
+
+  - env:
+      <<: *doom
+      id: DoomDeathmatch
+      reward_threshold: 20.0
+      entry_point: doom:DoomDeathmatchEnv
+      description: |
+        Kill as many monsters as possible without being killed.
+
+        Goal: 20 points
+            - Kill 20 monsters
+
+        Rewards:
+            - Plus 1 point for killing a monster
+
+        Ends when:
+            - Player is dead
+            - Timeout (3 minutes - 6,300 frames)
+
+        Allowed actions:
+            - ALL
+
+  - env:
+      <<: *doom
+      id: meta-Doom
+      reward_threshold: 9000.0
+      timestep_limit: 99999999
+      entry_point: doom:MetaDoomEnv
+      kwargs: { average_over: 3, passing_grade: 600, min_tries_for_avg: 3 }
+      description: |
+        This is a meta map that combines all 9 Doom levels.
+
+        Levels:
+            - No 0 Doom Basic
+            - No 1 Doom Corridor
+            - No 2 Doom DefendCenter
+            - No 3 Doom DefendLine
+            - No 4 Doom HealthGathering
+            - No 5 Doom MyWayHome
+            - No 6 Doom PredictPosition
+            - No 7 Doom TakeCover
+            - No 8 Doom Deathmatch
+
+        Goal: 9,000 points
+            - Pass all levels
+
+        Scoring:
+            - Each level score has been standardized on a scale of 0 to 1,000
+            - The passing score for a level is 990 (99th percentile)
+            - A bonus of 450 (50 * 9 levels) is given if all levels are passed
+            - The score for a level is the average of the last 3 tries
