@@ -13,6 +13,6 @@ def SetPlayingMode(target_mode):
             super(SetPlayingModeWrapper, self).__init__(env)
             if target_mode not in ['algo', 'human']:
                 raise gym.error.Error('Error - The mode "{}" is not supported. Supported options are "algo" or "human"'.format(target_mode))
-            self.unwrapped.mode = target_mode
+            self.unwrapped._mode = target_mode
 
     return SetPlayingModeWrapper

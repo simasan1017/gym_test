@@ -32,10 +32,6 @@ Tiles vs Regular:
     - Environment without "Tiles" will return a 256x224 array representation
       of the screen, where each square contains red, blue, and green value (RGB)
 
-    - "Tiles" environment can also access the screen information by calling
-
-        screen = env.render(mode='rgb_array')
-
 Actions:
     - The NES controller is composed of 6 buttons (Up, Left, Down, Right, A, B)
     - The step function expects an array of 0 and 1 that represents
@@ -52,13 +48,6 @@ Actions:
 
     - An action of '1' represents a key down, and '0' a key up.
     - To toggle the button, you must issue a key up, then a key down.
-
-Mode:
-    - The environment can be initialized with 3 different modes:
-
-    - "human" - Initializes fceux so a human can play the game (inputs from step() are ignored)
-    - "normal" - Initializes fceux with default rendering speed
-    - "fast" (default) - Initializes fceux to run the emulation as fast as possible
 
 Initiating the environment:
     - SuperMarioBros can be initiated with:
@@ -119,6 +108,33 @@ Game is stuck:
     - After 20 seconds, the stuck game will be automatically closed, and step() will return done=True with an info
       dictionary containing ignore=True. You can simply check if the ignore key is in the info dictionary, and ignore
       that specific episode.
+
+Wrappers:
+    You can use wrappers to further customize the environment. Wrappers need to be manually copied from the wrappers folder.
+
+        theWrapperOne = WrapperOneName(init_options)
+        theWrapperTwo = WrapperTwoName(init_options)
+        env = gym.make('ppaquette/SuperMarioBros-1-2-v0')
+        env = theWrapperTwo(theWrapperOne((env))
+
+    - Action space:
+
+        You can change the action space by using the ToDiscrete or ToBox wrapper
+
+            wrapper = ToBox()
+            env = wrapper(env)
+
+        ToDiscrete will convert the action space to a Discrete(14) action space with the relevant control.
+        ToBox will convert the action space to a Box(6,) action space.
+
+    - Control:
+
+        You can play the game manually with the SetPlayingMode wrapper.
+
+            wrapper = SetPlayingMode('human')
+            env = wrapper(env)
+
+        Valid options are 'human' or 'algo' (default)
 
 
 =====================
