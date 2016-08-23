@@ -221,6 +221,7 @@ class NesEnv(gym.Env, utils.EzPickle):
                     except IOError:
                         self.pipe_out = None
             # Removing lua file
+            sleep(1)  # Sleeping to make sure fceux has time to load file before removing
             if os.path.isfile(temp_lua_path):
                 try:
                     os.remove(temp_lua_path)
