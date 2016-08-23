@@ -25,18 +25,18 @@ SMB_LEVELS = [
 SUPER_MARIO_ROM_PATH = os.path.join(os.path.dirname(__file__), 'roms', 'super-mario.nes')
 
 class SuperMarioBrosEnv(NesEnv):
-    def __init__(self, draw_tiles=0, level=0):
+    def __init__(self, draw_tiles=False, level=0):
         NesEnv.__init__(self)
         package_directory = os.path.dirname(os.path.abspath(__file__))
         self.level = level
-        self.draw_tiles = draw_tiles
+        self.draw_tiles = 1 if draw_tiles else 0
         self._mode = 'algo'             # 'algo' or 'human'
         self.lua_path.append(os.path.join(package_directory, 'lua/super-mario-bros.lua'))
         self.tiles = None
         self.launch_vars['target'] = self._get_level_code(self.level)
         self.launch_vars['mode'] = 'algo'
         self.launch_vars['meta'] = '0'
-        self.launch_vars['draw_tiles'] = str(draw_tiles)
+        self.launch_vars['draw_tiles'] = str(self.draw_tiles)
         if os.path.isfile(SUPER_MARIO_ROM_PATH):
             self.rom_path = SUPER_MARIO_ROM_PATH
 
