@@ -68,7 +68,7 @@ Barto, Sutton, and Anderson [Barto83]_.
 )
 
 add_task(
-    id='Acrobot-v1',
+    id='LolAcrobot-v1',
     group='classic_control',
     summary="Swing up a two-link robot.",
     description="""\
