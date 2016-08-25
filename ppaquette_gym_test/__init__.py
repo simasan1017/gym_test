@@ -21,7 +21,7 @@ register(
 )
 
 register(
-    id='LolAcrobot-v1',
+    id='{}/Acrobot-v1'.format(USERNAME),
     entry_point='{}_gym_test:AcrobotEnv'.format(USERNAME),
     timestep_limit=500,
 )
@@ -68,7 +68,7 @@ Barto, Sutton, and Anderson [Barto83]_.
 )
 
 add_task(
-    id='LolAcrobot-v1',
+    id='{}/Acrobot-v1'.format(USERNAME),
     group='classic_control',
     summary="Swing up a two-link robot.",
     description="""\
