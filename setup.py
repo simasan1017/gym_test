@@ -2,7 +2,9 @@ from setuptools import setup, find_packages
 import sys, os
 
 # Don't import gym module here, since deps may not be installed
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'gym_test'))
+for package in find_packages():
+    if '_gym_' in package:
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), package))
 from package_info import USERNAME, VERSION
 
 setup(name='{}_{}'.format(USERNAME, 'gym_test'),
