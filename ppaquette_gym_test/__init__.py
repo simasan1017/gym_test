@@ -21,7 +21,7 @@ register(
 )
 
 register(
-    id='Acrobot-v1',
+    id='LolAcrobot-v1',
     entry_point='{}_gym_test:AcrobotEnv'.format(USERNAME),
     timestep_limit=500,
 )
